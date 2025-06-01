@@ -1,4 +1,6 @@
 React Todo App (Context API + localStorage)
+
+
 A simple, responsive Todo application built with React, Context API, and Tailwind CSS. All todos persist in the browser’s localStorage, allowing you to add, edit, complete, and delete tasks—even after page refresh.
 
 Table of Contents
@@ -93,6 +95,8 @@ my-todo-app/
 ├── package.json               # Dependencies, scripts, metadata
 ├── tailwind.config.js         # Tailwind CSS configuration
 └── README.md                  # This file
+
+
 Installation & Setup
 Prerequisites
 Node.js (v14 or newer) and npm (v6+) installed. Verify with:
