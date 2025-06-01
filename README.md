@@ -1,70 +1,245 @@
-# Getting Started with Create React App
+React Todo App (Context API + localStorage)
+A simple, responsive Todo application built with React, Context API, and Tailwind CSS. All todos persist in the browser’s localStorage, allowing you to add, edit, complete, and delete tasks—even after page refresh.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Table of Contents
+Project Overview
 
-## Available Scripts
+Features
 
-In the project directory, you can run:
+Tech Stack
 
-### `npm start`
+Folder Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Installation & Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Prerequisites
 
-### `npm test`
+Clone & Install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Running in Development
 
-### `npm run build`
+Building for Production
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+How It Works
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Context API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+localStorage Integration
 
-### `npm run eject`
+Tailwind CSS Styling
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Project Overview
+This repository contains a Todo application demonstrating:
 
-## Learn More
+Modern React patterns (functional components, hooks, Context API).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+State management with Context: all todo state and update functions live in a single provider.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Persistent storage: todos are automatically saved to and loaded from the browser’s localStorage.
 
-### Code Splitting
+Tailwind CSS: lightweight utility-first styling for rapid UI development.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Whether you’re learning React Context or building a quick prototype, this project serves as a foundation for managing global state and local persistence.
 
-### Analyzing the Bundle Size
+Features
+Add Todo: Create new tasks with a single input field.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Edit Todo: Click an edit icon to modify an existing task’s text.
 
-### Making a Progressive Web App
+Toggle Complete: Mark tasks as complete/incomplete with a checkbox.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Delete Todo: Remove tasks individually.
 
-### Advanced Configuration
+Persistent Data: All changes are saved to localStorage and reloaded on refresh.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Responsive UI: Mobile-friendly layout with simple Tailwind styling.
 
-### Deployment
+Tech Stack
+React (v18+) – Core UI framework
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Context API – Global state management without Redux
 
-### `npm run build` fails to minify
+localStorage – Browser-side persistence for todos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Tailwind CSS – Utility-first CSS framework for styling
+
+Create React App – Boilerplate and build tooling
+
+Folder Structure
+graphql
+Copy
+Edit
+my-todo-app/
+├── node_modules/              # Project dependencies (ignored in Git)
+├── public/
+│   ├── index.html             # HTML template
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   ├── TodoForm.js        # Form component to add new todos
+│   │   └── TodoItem.js        # Individual todo item (edit/toggle/delete)
+│   ├── context/
+│   │   └── TodoContext.js     # Context provider + custom hook (useTodo)
+│   ├── App.js                 # Main application component
+│   ├── index.js               # ReactDOM render entry point
+│   └── index.css              # Global styles (imports Tailwind)
+├── .gitignore                 # Files/folders to ignore in Git
+├── package.json               # Dependencies, scripts, metadata
+├── tailwind.config.js         # Tailwind CSS configuration
+└── README.md                  # This file
+Installation & Setup
+Prerequisites
+Node.js (v14 or newer) and npm (v6+) installed. Verify with:
+node -v
+npm -v
+
+Git installed locally to clone/pull/fork the repository.
+
+Clone & Install
+Clone the repo:
+git clone https://github.com/your-username/react-todo-context.git
+cd react-todo-context
+
+Install dependencies:
+npm install
+or, if you use Yarn:
+yarn install
+
+Running in Development
+To start a development server with hot-reload:
+
+npm start
+
+The app will launch at http://localhost:3000.
+
+Edit files in src/ and see updates automatically.
+
+Building for Production
+When you’re ready to create an optimized production build:
+
+npm run build
+
+Creates a build/ folder containing minified, production-ready files.
+
+Deploy the contents of build/ to any static hosting service (Netlify, Vercel, GitHub Pages, etc.).
+
+How It Works
+Context API
+TodoContext.js exports three things:
+
+TodoContext – The React context object.
+
+TodoProviderWrapper – A provider component that holds all todo state and functions.
+
+useTodo – A custom hook for consuming context in child components.
+
+Inside TodoProviderWrapper:
+
+State Initialization
+const [todos, setTodos] = useState([]);
+– Starts with an empty array (or loads from localStorage on mount).
+
+CRUD Functions
+
+addTodo({ todo, completed: false })
+
+updateTodo(id, { todo: newText })
+
+toggleCompleteTodo(id)
+
+removeTodo(id)
+
+Provider Value
+<TodoContext.Provider value={{ todos, addTodo, updateTodo, removeTodo, toggleCompleteTodo }}>
+{children}
+</TodoContext.Provider>
+
+Child components (e.g., TodoForm.js and TodoItem.js) call const { addTodo, updateTodo, … } = useTodo() to read and modify the same shared state.
+
+localStorage Integration
+On Mount
+
+javascript
+Copy
+Edit
+useEffect(() => {
+  const stored = JSON.parse(localStorage.getItem('todos'));
+  if (Array.isArray(stored)) {
+    setTodos(stored);
+  }
+}, []);
+– Runs once when the provider mounts. If todos exist in localStorage, load them into state.
+
+On State Change
+
+javascript
+Copy
+Edit
+useEffect(() => {
+  localStorage.setItem('todos', JSON.stringify(todos));
+}, [todos]);
+– Every time todos updates, save the new array into localStorage. This ensures persistence across refreshes.
+
+Tailwind CSS Styling
+Tailwind is configured via tailwind.config.js and imported in index.css.
+
+Utility classes (e.g., bg-[#172842], rounded-lg, px-3, py-1) provide rapid styling without writing custom CSS.
+
+Responsive layout and simple color schemes help keep the UI clean and mobile-friendly.
+
+Usage
+Add a Todo
+
+Type a task into the input field at the top and click Add.
+
+The new item appears below, and localStorage updates automatically.
+
+Edit a Todo
+
+Click the ✏️ (edit) button next to any incomplete task.
+
+Modify the text in the input, then click 💾 (save).
+
+The edited text is saved to state and localStorage.
+
+Toggle Complete
+
+Click the checkbox beside a task to mark it “completed.”
+
+Completed tasks show a light green background and a line-through.
+
+You cannot edit a completed task; you must uncheck it first to re-enable editing.
+
+Delete a Todo
+
+Click the ❌ button to remove a task entirely.
+
+It disappears from state and is removed from localStorage.
+
+All actions happen instantly in the UI, and the app maintains data across page reloads thanks to localStorage.
+
+Contributing
+Contributions, issues, and feature requests are welcome!
+
+Fork the repository.
+
+Create a new branch:
+git checkout -b feature/your-feature-name
+
+Make your changes and commit:
+git add .
+git commit -m "Add feature: [describe]"
+
+Push to your fork:
+git push origin feature/your-feature-name
+
+Open a Pull Request on GitHub, describing what you’ve changed and why.
+
+License
+This project is open-source and available under the MIT License.
